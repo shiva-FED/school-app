@@ -22,7 +22,7 @@ export default function Login() {
       }
       const role = snap.data().role;
       
-      if (role === "admin") navigate("/adminDashboard");
+      if (role === "admin") navigate("/admin/dashboard");
       else if (role === "teacher") navigate("/teachers");
       else if (role === "student") navigate("/students");
     } catch (e) {

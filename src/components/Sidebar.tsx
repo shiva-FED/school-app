@@ -6,15 +6,15 @@ export default function Sidebar() {
       <h2 className="logo">Admin Panel</h2>
 
       <nav>
-        <NavLink to="/adminDashboard" className="nav-item">
+        <NavLink to="/admin/dashboard" className="nav-item">
           Dashboard
         </NavLink>
 
-        <NavLink to="/teachers" className="nav-item">
+        <NavLink to="/admin/teachers" className="nav-item">
           Teachers
         </NavLink>
 
-        <NavLink to="/students" className="nav-item">
+        <NavLink to="/admin/students" className="nav-item">
           Students
         </NavLink>
       </nav>
