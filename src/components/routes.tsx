@@ -22,7 +22,7 @@ export default function Routes() {
         <Route path="/admin/teachers" element={role === "admin" ? <TeachersPage /> : <Navigate to="/" />} />
         <Route path="/admin/students" element={role === "admin" ? <StudentsPage /> : <Navigate to="/" />} />
         <Route path="/admin/dashboard" element={role === "admin" ? <AdminPage /> : <Navigate to="/" />} />
-        <Route path="/teachers" element={role === "teacher" ? <TeacherDashboard /> : <Navigate to="/" />} />
+        <Route path="/teacher/:user" element={role === "teacher" ? <TeacherDashboard /> : <Navigate to="/" />} />
         <Route path="*" element={<Navigate to="/" />} />
       </RouterRoutes>
       {/* {role === "admin" && <AdminDashboard />}

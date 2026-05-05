@@ -23,7 +23,7 @@ export default function Login() {
       const role = snap.data().role;
       
       if (role === "admin") navigate("/admin/dashboard");
-      else if (role === "teacher") navigate("/teachers");
+      else if (role === "teacher") navigate(`/teacher/${snap.data().name}=${cred.user.uid}`);
       else if (role === "student") navigate("/students");
     } catch (e) {
       alert("Invalid email or password");
