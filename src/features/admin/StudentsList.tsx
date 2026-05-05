@@ -17,6 +17,7 @@ export default function StudentsList({ onEdit }: any) {
       <table style={{ width: "100%", background: "#fff", borderRadius: "10px" }}>
         <thead style={{ background: "#f0f0f0" }}>
               <tr>
+                <th>SNo</th>
                 <th>Name</th>
                 <th>Role</th>
                 <th>Assign Teacher</th>
@@ -26,8 +27,9 @@ export default function StudentsList({ onEdit }: any) {
         <tbody>
           {users
             .filter((u) => u.role === "student")
-            .map((u) => (
+            .map((u, i) => (
               <tr key={u.id}>
+                <td>{i + 1}</td>
                 <td>{u.name}</td>
                 <td className="role-text">{u.role}</td>
 
