@@ -11,7 +11,6 @@ export default function TeacherBoard() {
 
   const teacherId = auth.currentUser?.uid;
 
-  // Load board data
   useEffect(() => {
     const loadBoard = async () => {
       if (!teacherId) return;

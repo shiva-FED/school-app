@@ -69,7 +69,7 @@ export const AdminProvider = ({ children }: any) => {
   
         alert("User created");
   
-        // 3. Clean up secondary app (important)
+        // 3. Clean up secondary app
         await secondaryAuth.signOut();
 
         await fetchData();
