@@ -13,7 +13,7 @@ export default function HeaderSection() {
     try {
       await handleCreateUser(data);
       alert("User created");
-      setShowAddModal(false); // ✅ UI handled here
+      setShowAddModal(false);
     } catch (e) {
       alert("Error creating user");
     }
