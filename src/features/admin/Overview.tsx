@@ -49,30 +49,29 @@ export default function Overview() {
               <div>
                 <h4 style={{ marginTop: "10px" }}>Students:</h4>
                 <div className="grid">
-                {teacherStudents.map((student) => {
-                  const userData = userMap[student.id];
-                  return (
-                    <div
-                      key={student.id}
-                      className="card"
-                      draggable
-                      onDragStart={(e) => {
-                        e.dataTransfer.setData("studentId", student.id);
-                        e.currentTarget.style.opacity = "0.5";
-                      }}
-                      onDragEnd={(e) => {
-                        e.currentTarget.style.opacity = "1";
-                      }}
-                    >
-                      <div>{userData?.name}</div>
-                      <small>{userData?.email}</small>
-                    </div>
-                  );
-                })}
-              {teacherStudents.length === 0 && <p>No students assigned</p>}
+                  {teacherStudents.map((student) => {
+                    const userData = userMap[student.id];
+                    return (
+                      <div
+                        key={student.id}
+                        className="card"
+                        draggable
+                        onDragStart={(e) => {
+                          e.dataTransfer.setData("studentId", student.id);
+                          e.currentTarget.style.opacity = "0.5";
+                        }}
+                        onDragEnd={(e) => {
+                          e.currentTarget.style.opacity = "1";
+                        }}
+                      >
+                        <div>{userData?.name}</div>
+                        <small>{userData?.email}</small>
+                      </div>
+                    );
+                  })}
+                  {teacherStudents.length === 0 && <p>No students assigned</p>}
                 </div>
               </div>
-
             </div>
           );
         })}

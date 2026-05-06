@@ -21,9 +21,10 @@ export default function Login() {
         return;
       }
       const role = snap.data().role;
-      
+
       if (role === "admin") navigate("/admin/dashboard");
-      else if (role === "teacher") navigate(`/teacher/${snap.data().name}=${cred.user.uid}`);
+      else if (role === "teacher")
+        navigate(`/teacher/${snap.data().name}=${cred.user.uid}`);
       else if (role === "student") navigate("/students");
     } catch (e) {
       alert("Invalid email or password");
@@ -37,28 +38,30 @@ export default function Login() {
       <div className="login-card">
         <h2 className="login-title">Welcome Back</h2>
         <p className="login-subtitle">Login to continue</p>
-
-        <input
-          className="login-input"
-          type="email"
-          placeholder="Email"
-          onChange={(e) => setEmail(e.target.value)}
-        />
-
-        <input
-          className="login-input"
-          type="password"
-          placeholder="Password"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-
-        <button
-          className="login-button"
-          onClick={handleLogin}
-          disabled={loading}
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleLogin();
+          }}
         >
-          {loading ? "Logging in..." : "Login"}
-        </button>
+          <input
+            className="login-input"
+            type="email"
+            placeholder="Email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+
+          <input
+            className="login-input"
+            type="password"
+            placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+
+          <button type="submit" className="login-button" disabled={loading}>
+            {loading ? "Logging in..." : "Login"}
+          </button>
+        </form>
       </div>
     </div>
   );

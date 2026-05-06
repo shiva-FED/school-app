@@ -69,16 +69,15 @@ export default function TeachersList() {
                 </td>
               </tr>
             ))}
-          
         </tbody>
       </table>
       {selectedUser && (
-            <EditUserModal
-              user={selectedUser}
-              onClose={() => setSelectedUser(null)}
-              onSave={handleSave}
-            />
-          )}
+        <EditUserModal
+          user={selectedUser}
+          onClose={() => setSelectedUser(null)}
+          onSave={handleSave}
+        />
+      )}
     </>
   );
 }

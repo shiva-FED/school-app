@@ -14,16 +14,18 @@ export default function StudentsList({ onEdit }: any) {
     <>
       <h3>List of Students</h3>
 
-      <table style={{ width: "100%", background: "#fff", borderRadius: "10px" }}>
+      <table
+        style={{ width: "100%", background: "#fff", borderRadius: "10px" }}
+      >
         <thead style={{ background: "#f0f0f0" }}>
-              <tr>
-                <th>SNo</th>
-                <th>Name</th>
-                <th>Role</th>
-                <th>Assign Teacher</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
+          <tr>
+            <th>SNo</th>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Assign Teacher</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
         <tbody>
           {users
             .filter((u) => u.role === "student")
@@ -36,9 +38,7 @@ export default function StudentsList({ onEdit }: any) {
                 <td>
                   <select
                     value={u.teacherId || ""}
-                    onChange={(e) =>
-                      handleAssign(u.id, e.target.value)
-                    }
+                    onChange={(e) => handleAssign(u.id, e.target.value)}
                   >
                     <option>Select Teacher</option>
 
@@ -53,11 +53,18 @@ export default function StudentsList({ onEdit }: any) {
                 </td>
 
                 <td>
-                  <button className="action-btn edit-btn" onClick={() => onEdit(u)}>
+                  <button
+                    className="action-btn edit-btn"
+                    onClick={() => onEdit(u)}
+                  >
                     <FaEdit />
                   </button>
 
-                  <button className="action-btn delete-btn" style={{ marginLeft: "8px" }} onClick={() => deleteUser(u.id)}>
+                  <button
+                    className="action-btn delete-btn"
+                    style={{ marginLeft: "8px" }}
+                    onClick={() => deleteUser(u.id)}
+                  >
                     <MdDelete />
                   </button>
                 </td>

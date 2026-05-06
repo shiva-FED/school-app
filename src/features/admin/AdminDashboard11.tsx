@@ -7,10 +7,7 @@ import {
 } from "../../services/firestoreService";
 import EditUserModal from "../../components/EditUserModal";
 import LogoutButton from "../../components/common/LogoutButton";
-import {
-  createUserWithEmailAndPassword,
-  getAuth,
-} from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import { auth, db, firebaseConfig } from "../../services/firebase";
 import { doc, setDoc } from "firebase/firestore";
 import AddUserModal from "../../components/AddUserModal";
@@ -27,7 +24,7 @@ interface User {
   teacherId?: string;
 }
 
-export default function AdminDashboard() {
+export default function AdminDashboard11() {
   const [users, setUsers] = useState<User[]>([]);
   const [selectedUser, setSelectedUser] = useState<any>(null);
   const [showAddModal, setShowAddModal] = useState(false);
@@ -76,8 +73,8 @@ export default function AdminDashboard() {
   }, {});
 
   const handleCreateUser = async (data: any) => {
-    const secondaryApp = 
-      getApps().find((app) => app.name === "secondary") || 
+    const secondaryApp =
+      getApps().find((app) => app.name === "secondary") ||
       initializeApp(firebaseConfig, "secondary");
     const secondaryAuth = getAuth(secondaryApp);
 
@@ -145,8 +142,6 @@ export default function AdminDashboard() {
         )}
       </div>
 
-
-
       <div>
         <div>
           <h3>List of teachers:</h3>
@@ -199,7 +194,6 @@ export default function AdminDashboard() {
           </table>
           <br />
 
-          
           <h3>List of students:</h3>
           <table
             style={{ width: "100%", background: "#fff", borderRadius: "10px" }}
@@ -271,7 +265,6 @@ export default function AdminDashboard() {
           </table>
         </div>
         <br />
-
 
         <div>
           <h3>Overview:</h3>

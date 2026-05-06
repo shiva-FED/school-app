@@ -41,43 +41,43 @@ export const AdminProvider = ({ children }: any) => {
   }, []);
 
   const handleCreateUser = async (data: any) => {
-      const secondaryApp = 
-        getApps().find((app) => app.name === "secondary") || 
-        initializeApp(firebaseConfig, "secondary");
-      const secondaryAuth = getAuth(secondaryApp);
-  
-      try {
-        // 1. create auth user
-        const cred = await createUserWithEmailAndPassword(
-          secondaryAuth,
-          data.email,
-          data.password,
-        );
-  
-        console.log("Auth created:", cred.user.uid);
-        console.log("Primary auth user:", auth.currentUser);
-  
-        // 2. store in firestore
-        await setDoc(doc(db, "users", cred.user.uid), {
-          name: data.name,
-          email: data.email,
-          role: data.role,
-          teacherId: data.role === "student" ? data.teacherId : null,
-        });
-  
-        console.log("Firestore write SUCCESS");
-  
-        alert("User created");
-  
-        // 3. Clean up secondary app
-        await secondaryAuth.signOut();
+    const secondaryApp =
+      getApps().find((app) => app.name === "secondary") ||
+      initializeApp(firebaseConfig, "secondary");
+    const secondaryAuth = getAuth(secondaryApp);
 
-        await fetchData();
-      } catch (e) {
-        console.error("@@@@@", e);
-         throw e;
-      }
-    };
+    try {
+      // 1. create auth user
+      const cred = await createUserWithEmailAndPassword(
+        secondaryAuth,
+        data.email,
+        data.password,
+      );
+
+      console.log("Auth created:", cred.user.uid);
+      console.log("Primary auth user:", auth.currentUser);
+
+      // 2. store in firestore
+      await setDoc(doc(db, "users", cred.user.uid), {
+        name: data.name,
+        email: data.email,
+        role: data.role,
+        teacherId: data.role === "student" ? data.teacherId : null,
+      });
+
+      console.log("Firestore write SUCCESS");
+
+      alert("User created");
+
+      // 3. Clean up secondary app
+      await secondaryAuth.signOut();
+
+      await fetchData();
+    } catch (e) {
+      console.error("@@@@@", e);
+      throw e;
+    }
+  };
 
   return (
     <AdminContext.Provider
@@ -87,7 +87,7 @@ export const AdminProvider = ({ children }: any) => {
         updateUser,
         deleteUser,
         deleteTeacher,
-        handleCreateUser
+        handleCreateUser,
       }}
     >
       {children}

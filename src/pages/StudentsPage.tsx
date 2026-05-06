@@ -5,10 +5,10 @@ import AdminLayout from "../layouts/AdminLayout"
 function StudentsPage() {
   return (
     <AdminProvider>
-          <AdminLayout>
-            <StudentsList />
-          </AdminLayout>
-        </AdminProvider>
+      <AdminLayout>
+        <StudentsList />
+      </AdminLayout>
+    </AdminProvider>
   )
 }
 

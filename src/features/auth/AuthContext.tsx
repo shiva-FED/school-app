@@ -12,8 +12,7 @@ interface AuthContextType {
 export const AuthContext = createContext<AuthContextType>({
   user: null,
   role: null,
-  loading: true
-  
+  loading: true,
 });
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
@@ -25,24 +24,24 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const unsub = onAuthStateChanged(auth, async (u) => {
       try {
         if (u) {
-        setUser(u);
-        const snap = await getDoc(doc(db, "users", u.uid));
-        if (snap.exists()) {
+          setUser(u);
+          const snap = await getDoc(doc(db, "users", u.uid));
+          if (snap.exists()) {
             setRole(snap.data().role);
-        } else {
+          } else {
             console.error("User doc not found");
+          }
+        } else {
+          setRole(null);
+          setUser(null);
         }
-      } else {
-        setRole(null);
-        setUser(null);
-      }
       } catch (error) {
         console.error("Auth error:", error);
-      setUser(null);
-      setRole(null);
+        setUser(null);
+        setRole(null);
       } finally {
-      setLoading(false);
-    }
+        setLoading(false);
+      }
     });
 
     return () => unsub();
